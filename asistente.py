@@ -38,7 +38,12 @@ class Asistente:
         self.historiar.append(mensaje)
         mensaje_normalizado = mensaje.strip().casefold()
 
-        if mensaje_normalizado.startswith("me llamo"):
+        if any(
+            despedida in mensaje_normalizado
+            for despedida in ("adios", "salir", "bye", "chao", "hasta luego", "buenas noches")
+        ):
+            respuesta = f"Adiós, {self.nombre_usuario}. Gracias por visitar {self.nombre_negocio}."
+        elif mensaje_normalizado.startswith("me llamo"):
             nombre = mensaje[ mensaje.casefold().find("me llamo") + len("me llamo"):].strip()
             if nombre:
                 self.nombre_usuario = nombre.capitalize()
