@@ -38,6 +38,9 @@ class Asistente:
         for quien, texto in self.historiar:
             print(f"{quien} {texto}")
 
+    def mostrar_historiar(self):
+        self.mostral_historiar()
+
     def responder(self, mensaje):
         self.historiar.append(("usuario", mensaje))
         mensaje_normalizado = mensaje.strip().casefold()
